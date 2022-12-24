@@ -1,0 +1,226 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <title>Fast Food - Bucketlist</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename = 'assets/img/favicon.png')}}" rel="icon">
+    <link href="{{ url_for('static', filename = 'assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  
+    <!-- CSS Files -->
+    <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'assets/vendor/aos/aos.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  
+    <!-- Main CSS File -->
+    <link href="static/assets/css/main.css" rel="stylesheet">
+  </head>
+  
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="container d-flex align-items-center justify-content-between">
+
+        <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+          <h1>Fast Food<span>.</span></h1>
+        </a>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/vote">Food Vote</a></li>
+            <li><a href="/random">Random Selector</a></li>
+            <li><a href="/bucketlist">Bucket List</a></li>
+            <li><a href="/#devs">Team</a></li>
+          </ul>
+        </nav><!-- .navbar -->
+
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+      </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+
+
+      <section id="hero" style="height:80%"  class="hero d-flex justify-content-center section-bg">
+        <div class="container" data-aos="fade-up">
+          <div class="row gy-5 justify-content-center" style="text-align:center;">
+            <div class="col-lg-8 menu-item justify-content-center" style="text-align:center;">
+              <h2>Bucket List</h2>
+              <p>
+                The bucketlist allows you to keep track of the places you want to eat and where you've already eaten.
+              </p>
+
+              <!-- Textbox -->
+              <label for="bucketInput">Input Restaurant: </label>
+              <input type="text" id="bucketInput" required minlength="1" maxlength="40" size="30">
+
+              <button id="manualButton" class="btn-book-a-table" type="button" style="padding:5;">Add Manually</button>
+              <br><br>
+              <!-- Bucket list -->
+              <ul class="list-group" style="text-align:left;">
+                {% for res in data %}
+                  <li class="list-group-item"> 
+                    Restaurant: <span style="font-weight: bold;"> {{res[1]}} </span> <br>
+                    <button id="{{res[0]}}" type="button" class="btn-book-a-table" style="padding:3;" onClick="deleteEntry(this.id)">Delete</button>
+                    {% if res[3] == 1 %} |
+                      Visited <input id="{{res[0]}}" type="checkbox" onClick="checkEntry(this)" checked> 
+                    {% else %} |
+                      Not Visited <input id="{{res[0]}}" type="checkbox" onClick="checkEntry(this)"> 
+                    {% endif %}
+                  </li> 
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <script>
+      function manualAdd()
+      {
+        var bucketTextbox = document.getElementById("bucketInput").value;
+
+        fetch('/bucketlist', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "resInput": bucketTextbox })
+        })
+
+        document.location.reload();
+      }
+
+      function checkEntry(checkbox)
+      {
+        var checkStatus = 0;
+
+        if(checkbox.checked) 
+          checkStatus = 1;
+
+        fetch('/bucketlist', {
+          method: 'PUT',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "checkStatus": checkStatus, "id":checkbox.id })
+        })
+
+        document.location.reload();
+      }
+
+      function deleteEntry(clicked_id)
+      {
+        fetch('/bucketlist', {
+          method: 'DELETE',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ "resID": clicked_id })
+        })
+
+        document.location.reload();
+      }
+
+      document.getElementById("manualButton").addEventListener('click', manualAdd);
+    </script>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Location</h4>
+            <p>
+              San Diego, CA - US<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact Us</h4>
+            <p>
+              <strong>Email:</strong> kathkamarilyn@gmail.com<br>
+              <strong>Email:</strong> francobelman@live.om<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Work Schedule</h4>
+            <p>
+                <strong>Mon-Fri:</strong> 9AM</strong> - 5PM<br>
+                <strong>Sat-Sun:</strong> Closed
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 footer-links">
+          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marilyn</h4>
+          <div class="social-links d-flex">&nbsp;
+            <a href="https://www.linkedin.com/in/marilynkathka/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/marilynkat" class="github"><i class="bi bi-github"></i></a>
+
+            
+          </div>
+        </div>
+
+        <div class="col-lg-1 footer-links">
+          <h4>Franco</h4>
+          <div class="social-links d-flex">&nbsp;
+            <a href="https://www.linkedin.com/in/francobelman/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        <strong>Created By:</strong>
+      </div>
+      <div class="credits">
+        Marilyn Kathka and Franco Belman
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+    <!-- JS Files -->
+    <script src="{{ url_for('static', filename = 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendor/aos/aos.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+    <!-- Main JS File -->
+    <script src="{{ url_for('static', filename = 'assets/js/main.js')}}"></script>
+  </body>
+</html>

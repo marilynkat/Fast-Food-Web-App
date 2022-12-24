@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Fast Food - Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename = 'assets/img/favicon.png')}}" rel="icon">
+  <link href="{{ url_for('static', filename = 'assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{ url_for('static', filename = 'assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="static/assets/css/main.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center me-auto me-lg-0">
+        <h1>Fast Food<span>.</span></h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/vote">Food Vote</a></li>
+          <li><a href="/random">Random Selector</a></li>
+          <li><a href="/bucketlist">Bucket List</a></li>
+          <li><a href="/#devs">Team</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+
+  <section id="hero" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+      <div class="row justify-content-center gy-5">
+        <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+          <h2 data-aos="fade-up">Picking your next meal<br>Made Easy</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Fast Food is a web application designed to make picking your next meal easy. Whether you're alone, with your friends, or your whole family, choosing your next meal shouldn't be a struggle.</p>
+          <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+            <a href="#devs" class="btn-book-a-table">Developers</a>
+          </div>
+        </div>
+        <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+          <img src="{{ url_for('static', filename = 'assets/img/hero-img.png')}}" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="why-us" class="why-us section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-box">
+              <h3>How does Fast Food work?</h3>
+              <p>
+                Fast Food has three main functionalities. They include the food vote, random restaurant selector, and the bucketlist.
+                Each functionality is meant to aid the user in choosing their next meal. 
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-8 d-flex align-items-center">
+            <div class="row gy-4">
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-clipboard-data"></i>
+                  <h4>Food Vote</h4>
+                  <p>Our food vote page allows a group of people to vote on which restaurant to eat at next.</p>
+                </div>
+              </div>
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-gem"></i>
+                  <h4>Random Selector</h4>
+                  <p>If you have no idea where to eat next, our random selector will choose a restaurant near you for you.</p>
+                </div>
+              </div>
+
+              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                  <i class="bi bi-inboxes"></i>
+                  <h4>Bucketlist</h4>
+                  <p>Our bucketlist allows you to keep track of the restaurants you want to eat at and which you've been to already.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="devs" class="chefs section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Members</h2>
+          <p>Software <span>Development</span> Team</p>
+        </div>
+
+        <div class="row gy-4 d-flex justify-content-center">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{{ url_for('static', filename = 'assets/img/mkathka.jpg')}}" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Marilyn Kathka</h4>
+                <span>Full-Stack Software Engineer</span>
+                <p>Marilyn has a bachelor's degree in Computer Science from California State University, Monterey Bay. She specializes in full stack development using various languages including: Python, Java, C# and more.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <div class="chef-member">
+              <div class="member-img">
+                <img src="{{ url_for('static', filename = 'assets/img/fbelman.png')}}" width="420" class="img-fluid" alt="">
+              </div>
+              <div class="member-info">
+                <h4>Franco Belman</h4>
+                <span>Front-End Software Engineer</span>
+                <p>Franco is a software developer focused on front end programming. He has a degree in Computer Science and enjoys learning about cyber security on his off time.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-3">
+        <div class="col-lg-3 col-md-6 d-flex">
+          <i class="bi bi-geo-alt icon"></i>
+          <div>
+            <h4>Location</h4>
+            <p>
+              San Diego, CA - US<br>
+            </p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-telephone icon"></i>
+          <div>
+            <h4>Contact Us</h4>
+            <p>
+              <strong>Email:</strong> kathkamarilyn@gmail.com<br>
+              <strong>Email:</strong> francobelman@live.com<br>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links d-flex">
+          <i class="bi bi-clock icon"></i>
+          <div>
+            <h4>Work Schedule</h4>
+            <p>
+                <strong>Mon-Fri:</strong> 9AM</strong> - 5PM<br>
+                <strong>Sat-Sun:</strong> Closed
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 footer-links">
+          <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Marilyn</h4>
+          <div class="social-links d-flex">&nbsp;
+            <a href="https://www.linkedin.com/in/marilynkathka/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="https://github.com/marilynkat" class="github"><i class="bi bi-github"></i></a>
+
+            
+          </div>
+        </div>
+
+        <div class="col-lg-1 footer-links">
+          <h4>Franco</h4>
+          <div class="social-links d-flex">&nbsp;
+            <a href="https://www.linkedin.com/in/francobelman/" class="linkedin"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        <strong>Created By:</strong>
+      </div>
+      <div class="credits">
+        Marilyn Kathka and Franco Belman
+      </div>
+    </div>
+
+  </footer><!-- End Footer -->
+
+  <!-- JS Files -->
+  <script src="{{ url_for('static', filename = 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ url_for('static', filename = 'assets/vendor/aos/aos.js')}}"></script>
+  <script src="{{ url_for('static', filename = 'assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
+  <script src="{{ url_for('static', filename = 'assets/vendor/purecounter/purecounter_vanilla.js')}}"></script>
+  <script src="{{ url_for('static', filename = 'assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
+
+  <!-- Main JS File -->
+  <script src="{{ url_for('static', filename = 'assets/js/main.js')}}"></script>
+
+</body>
+
+</html>
