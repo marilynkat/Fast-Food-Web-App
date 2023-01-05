@@ -7,7 +7,7 @@ There's a voting feature where users can vote amongst friends or input options f
 There's also a random selection feature where a random restaurant will be chosen based on the users location. \
 The last feature is a bucket list that can hold restaurants that the user would like to visit in the future. 
 
-# Instructions
+# Instructions and Features
 ## Voting Feature
 1. Input and add options to vote from anonymously. 
 2. When all options are added click the "Begin Voting" button. 
