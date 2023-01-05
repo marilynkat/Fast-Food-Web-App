@@ -27,5 +27,7 @@ The last feature is a bucket list that can hold restaurants that the user would 
 restuarant looks intersting but isn't perfect for the current moment.
 
 ## Bucketlist Feature
-1. The user can manually input restaurants they'd like to visit in the future and add them to a list.
-2. 
+1. Sign into a Google account to access personal bucket list.
+2. Input a restaurant you want to try and click "Add Manually" to add entry to the bucket list.
+3. Mark entries as visited by clicking the checkbox to keep track of which ones have been tried.
+4. Delete entries with the corresponding "Delete" button to remove entries from the bucket list.
